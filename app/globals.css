@@ -226,6 +226,54 @@
     );
   }
 
+  /* Legal / long-form prose */
+  .prose-legal {
+    @apply text-[15.5px] leading-[1.75] text-ink-500;
+  }
+  .prose-legal p {
+    @apply my-4 text-pretty;
+  }
+  .prose-legal strong {
+    @apply font-semibold text-ink-900;
+  }
+  .prose-legal a {
+    @apply text-saffron-700 underline-offset-2 hover:underline;
+  }
+  .prose-legal h3 {
+    @apply mt-8 mb-3 font-serif text-lg font-medium tracking-tight text-ink-900;
+  }
+  .prose-legal h4 {
+    @apply mt-6 mb-2 text-sm font-semibold uppercase tracking-[0.12em] text-ink-900;
+  }
+  .prose-legal ul,
+  .prose-legal ol {
+    @apply my-4 space-y-2 pl-5;
+  }
+  .prose-legal ul {
+    @apply list-disc marker:text-saffron-500;
+  }
+  .prose-legal ol {
+    @apply list-decimal marker:text-ink-400 marker:font-medium;
+  }
+  .prose-legal li {
+    @apply pl-1;
+  }
+  .prose-legal blockquote {
+    @apply my-5 border-l-2 border-saffron-300 bg-saffron-50/50 px-5 py-3 text-[14.5px] italic text-ink-700;
+  }
+  .prose-legal code {
+    @apply rounded bg-paper-100 px-1.5 py-0.5 text-[13.5px] text-ink-900 font-mono;
+  }
+  .prose-legal table {
+    @apply my-6 w-full border-collapse text-[13.5px];
+  }
+  .prose-legal th {
+    @apply border-b border-ink-100 bg-paper-100 px-3 py-2 text-left font-semibold text-ink-900;
+  }
+  .prose-legal td {
+    @apply border-b border-ink-100 px-3 py-2 align-top;
+  }
+
   /* Underline animation for links */
   .link-underline {
     @apply relative inline-flex items-center;
