@@ -6,26 +6,40 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { 
   Search, Menu, X, ChevronDown, ArrowRight, BookOpen, Compass, 
-  ScrollText, Target, FileText, Sparkles, Building2
+  ScrollText, Target, FileText, Sparkles, Building2,
+  Calculator, Siren, ArrowRightLeft, HelpCircle
 } from "lucide-react";
 import Logo from "./Logo";
+import { useCommandPalette } from "./CommandPalette";
 import { categories, megaMenuGroups, getCategoryBySlug } from "@/lib/categories";
 import { cn } from "@/lib/utils";
 
 const navStructure = [
   { id: "laws", label: "Laws & Acts", href: "/laws", type: "mega" },
   { id: "rights", label: "Rights", href: "/know-your-rights", type: "link" },
-  { 
-    id: "resources", 
-    label: "Resources", 
-    href: "#", 
+  {
+    id: "tools",
+    label: "Tools",
+    href: "#",
+    type: "dropdown",
+    items: [
+      { label: "Ask Nyaya Mitra", href: "/ask", desc: "Guided answer to your real problem", icon: HelpCircle },
+      { label: "Legal Toolkit", href: "/toolkit", desc: "Calculators, generators, drafts", icon: Calculator },
+      { label: "SOS — Emergency Card", href: "/sos", desc: "What to do in 30 seconds", icon: Siren },
+      { label: "IPC → BNS Mapper", href: "/ipc-bns", desc: "Old code to new code", icon: ArrowRightLeft },
+    ],
+  },
+  {
+    id: "resources",
+    label: "Resources",
+    href: "#",
     type: "dropdown",
     items: [
       { label: "Case Studies", href: "/case-studies", desc: "Real-world legal breakdowns", icon: BookOpen },
       { label: "Daily Level-Up", href: "/daily-level-up", desc: "Bite-sized daily lessons", icon: Target },
-      { label: "Glossary", href: "/glossary", desc: "Legal terminology explained", icon: FileText },
-      { label: "About Us", href: "/about", desc: "Our mission and story", icon: Compass }
-    ]
+      { label: "Glossary", href: "/glossary", desc: "Big words, small explanations", icon: FileText },
+      { label: "About Us", href: "/about", desc: "Our mission and story", icon: Compass },
+    ],
   },
   { id: "pro", label: "Enterprise", href: "/business-and-tax", type: "link", isPremium: true },
 ];
@@ -37,6 +51,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
+  const { open: openCommand } = useCommandPalette();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -165,10 +180,15 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              className="hidden h-9 w-9 items-center justify-center shrink-0 rounded-full text-ink-500 dark:text-zinc-400 transition-all duration-300 hover:bg-ink-100 dark:hover:bg-white/10 hover:text-ink-900 dark:hover:text-white lg:inline-flex"
-              aria-label="Search"
+              onClick={openCommand}
+              className="hidden h-9 items-center justify-center shrink-0 gap-2 rounded-full border border-ink-100 bg-paper-50/70 px-3 text-ink-500 backdrop-blur transition-all duration-300 hover:border-saffron-300 hover:text-ink-900 lg:inline-flex"
+              aria-label="Search (Ctrl/Cmd+K)"
             >
-              <Search className="h-4.5 w-4.5" />
+              <Search className="h-3.5 w-3.5" />
+              <span className="hidden text-[12px] xl:inline">Search…</span>
+              <span className="hidden items-center gap-1 xl:inline-flex">
+                <span className="rounded border border-ink-100 bg-paper-100 px-1 text-[10px] font-semibold leading-none text-ink-700">⌘K</span>
+              </span>
             </button>
             <Link
               href="/laws"
@@ -270,9 +290,9 @@ export default function Header() {
                   </div>
                 )}
 
-                {activeMenu === "resources" && (
+                {(activeMenu === "resources" || activeMenu === "tools") && (
                   <div className="p-3 relative z-10 flex flex-col gap-1">
-                    {navStructure.find(n => n.id === "resources")?.items?.map((item, i) => (
+                    {navStructure.find(n => n.id === activeMenu)?.items?.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}

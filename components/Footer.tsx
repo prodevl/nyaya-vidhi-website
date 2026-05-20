@@ -5,6 +5,16 @@ import { categories } from "@/lib/categories";
 
 const footerSections = [
   {
+    title: "Tools",
+    links: [
+      { label: "Ask Nyaya Mitra", href: "/ask" },
+      { label: "Legal Toolkit", href: "/toolkit" },
+      { label: "SOS — Emergency Card", href: "/sos" },
+      { label: "IPC → BNS Mapper", href: "/ipc-bns" },
+      { label: "Glossary", href: "/glossary" },
+    ],
+  },
+  {
     title: "Explore",
     links: [
       { label: "All Laws", href: "/laws" },
@@ -103,7 +113,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-8 grid grid-cols-2 gap-8 md:grid-cols-3">
+          <div className="lg:col-span-8 grid grid-cols-2 gap-8 md:grid-cols-4">
             {footerSections.map((section) => (
               <div key={section.title}>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-400 dark:text-zinc-500">

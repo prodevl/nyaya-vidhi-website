@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Inter, Tiro_Devanagari_Hindi } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CommandPaletteProvider from "@/components/CommandPalette";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -71,11 +72,13 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <Header />
-        <main id="main" className="relative">
-          {children}
-        </main>
-        <Footer />
+        <CommandPaletteProvider>
+          <Header />
+          <main id="main" className="relative">
+            {children}
+          </main>
+          <Footer />
+        </CommandPaletteProvider>
       </body>
     </html>
   );

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Search, Scale } from "lucide-react";
+import { useCommandPalette } from "./CommandPalette";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -14,6 +15,7 @@ const fadeUp = {
 };
 
 export default function Hero() {
+  const { open: openCommand } = useCommandPalette();
   return (
     <section className="relative overflow-hidden pt-10 pb-20 lg:pt-20 lg:pb-32">
       {/* Background ornaments */}
@@ -86,12 +88,16 @@ export default function Hero() {
             animate="show"
             className="mt-9 flex flex-wrap items-center justify-center gap-3"
           >
+            <Link href="/ask" className="btn-saffron">
+              Ask Nyaya Mitra
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
             <Link href="/laws" className="btn-primary">
               Explore all laws
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
-            <Link href="/know-your-rights" className="btn-outline">
-              Know your rights
+            <Link href="/toolkit" className="btn-outline">
+              Open toolkit
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </motion.div>
@@ -104,25 +110,32 @@ export default function Hero() {
             animate="show"
             className="mt-12 w-full max-w-xl"
           >
-            <div className="group flex items-center gap-2 rounded-2xl border border-ink-100 bg-paper-50/95 p-2 shadow-elevated backdrop-blur transition focus-within:border-saffron-400 focus-within:shadow-glow">
+            <button
+              type="button"
+              onClick={openCommand}
+              className="group flex w-full items-center gap-2 rounded-2xl border border-ink-100 bg-paper-50/95 p-2 text-left shadow-elevated backdrop-blur transition hover:border-saffron-400 hover:shadow-glow"
+              aria-label="Open quick search"
+            >
               <span className="pl-3 text-ink-400">
                 <Search className="h-4 w-4" />
               </span>
-              <input
-                type="search"
-                placeholder="Try: 'maternity leave', 'cheque bounce', 'Section 138'…"
-                className="flex-1 bg-transparent px-2 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 focus:outline-none"
-                aria-label="Search laws"
-              />
-              <button className="rounded-xl bg-ink-900 px-4 py-2.5 text-sm font-medium text-paper-50 hover:bg-ink-500">
+              <span className="flex-1 px-2 py-2.5 text-sm text-ink-400">
+                Try: 'maternity leave', 'cheque bounce', 'Section 138'…
+              </span>
+              <span className="hidden items-center gap-1 pr-2 sm:flex">
+                <kbd className="rounded border border-ink-100 bg-paper-100 px-1.5 py-0.5 text-[10px] font-semibold text-ink-700">⌘</kbd>
+                <kbd className="rounded border border-ink-100 bg-paper-100 px-1.5 py-0.5 text-[10px] font-semibold text-ink-700">K</kbd>
+              </span>
+              <span className="rounded-xl bg-ink-900 px-4 py-2.5 text-sm font-medium text-paper-50 group-hover:bg-ink-500">
                 Search
-              </button>
-            </div>
+              </span>
+            </button>
             <div className="mt-3 flex flex-wrap items-center justify-center gap-1.5 text-[12px] text-ink-400">
               <span className="mr-1">Popular:</span>
               {["FIR", "RERA", "ITR", "POSH", "Article 21", "GST"].map((q) => (
                 <button
                   key={q}
+                  onClick={openCommand}
                   className="rounded-full border border-ink-100 bg-paper-50 px-2.5 py-1 text-ink-500 hover:border-saffron-300 hover:text-saffron-700"
                 >
                   {q}
