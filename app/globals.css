@@ -305,3 +305,38 @@
     mask-image: linear-gradient(to right, #000 70%, transparent);
   }
 }
+
+/* ============================================================
+   Print styles — clean, paper-friendly output for legal guides
+   ============================================================ */
+@media print {
+  html, body {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #1A1410 !important;
+  }
+
+  /* Hide app chrome */
+  header[role="banner"],
+  nav,
+  footer,
+  [aria-label="Breadcrumb"] {
+    display: none !important;
+  }
+
+  .card-heritage {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border-color: #E5E0D6 !important;
+  }
+
+  a[href]::after {
+    content: "";
+  }
+
+  .shadow-soft,
+  .shadow-elevated,
+  .shadow-glow {
+    box-shadow: none !important;
+  }
+}
