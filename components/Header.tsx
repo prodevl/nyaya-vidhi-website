@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils";
 
 const navStructure = [
   { id: "laws", label: "Laws & Acts", href: "/laws", type: "mega" },
-  { id: "learn", label: "Academy", href: "/learn", type: "link" },
   { id: "rights", label: "Rights", href: "/know-your-rights", type: "link" },
   { 
     id: "resources", 
@@ -172,10 +171,10 @@ export default function Header() {
               <Search className="h-4.5 w-4.5" />
             </button>
             <Link
-              href="/learn"
+              href="/laws"
               className="hidden lg:inline-flex shrink-0 whitespace-nowrap items-center justify-center gap-1.5 rounded-full bg-ink-900 text-white px-5 py-2 text-[13.5px] font-semibold tracking-wide shadow-[0_4px_14px_rgba(0,0,0,0.15)] transition-all duration-300 hover:bg-ink-800 hover:shadow-[0_6px_20px_rgba(0,0,0,0.2)] hover:-translate-y-0.5 active:scale-95"
             >
-              Start Learning
+              Explore Laws
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
 
@@ -385,11 +384,11 @@ export default function Header() {
                 ))}
                 
                 <Link
-                  href="/learn"
+                  href="/laws"
                   onClick={() => setMobileOpen(false)}
                   className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-ink-900 px-5 py-4 text-[15px] font-semibold text-white shadow-lg transition-transform active:scale-95"
                 >
-                  Start Learning
+                  Explore Laws
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

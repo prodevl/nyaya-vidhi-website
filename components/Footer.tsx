@@ -8,7 +8,6 @@ const footerSections = [
     title: "Explore",
     links: [
       { label: "All Laws", href: "/laws" },
-      { label: "Learning Paths", href: "/learn" },
       { label: "Know Your Rights", href: "/know-your-rights" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Daily Level-Up", href: "/daily-level-up" },

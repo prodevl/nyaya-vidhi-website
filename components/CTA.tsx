@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight, Compass } from "lucide-react";
 
 export default function CTA() {
   return (
@@ -53,15 +53,15 @@ export default function CTA() {
               </p>
             </div>
             <div className="flex flex-col gap-3 lg:col-span-4">
-              <Link href="/learn" className="btn-saffron justify-between gap-3 px-6 py-3.5 text-base">
+              <Link href="/laws" className="btn-saffron justify-between gap-3 px-6 py-3.5 text-base">
                 <span className="flex items-center gap-2">
-                  <BookOpen className="h-4 w-4" />
-                  Start a learning path
+                  <Compass className="h-4 w-4" />
+                  Browse all laws
                 </span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/laws" className="btn-outline justify-between gap-3 px-6 py-3.5 text-base">
-                Browse all laws
+              <Link href="/know-your-rights" className="btn-outline justify-between gap-3 px-6 py-3.5 text-base">
+                Know your rights
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <p className="mt-2 text-center text-xs text-ink-400">

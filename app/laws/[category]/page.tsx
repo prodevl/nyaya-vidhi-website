@@ -124,10 +124,10 @@ export default async function CategoryPage({ params }: Props) {
                   Open any statute below for chapter-by-chapter notes, every operative section quoted verbatim, scenarios, FAQs, and a link to the source PDF.
                 </p>
                 <Link
-                  href="/learn"
+                  href="/case-studies"
                   className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-saffron-700 hover:text-saffron-600"
                 >
-                  Browse learning paths
+                  Browse case studies
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>

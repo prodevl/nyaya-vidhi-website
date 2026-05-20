@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Search, BookOpen, Scale } from "lucide-react";
+import { ArrowRight, Sparkles, Search, Scale } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -90,9 +90,9 @@ export default function Hero() {
               Explore all laws
               <ArrowRight className="h-3.5 w-3.5" />
             </Link>
-            <Link href="/learn" className="btn-outline">
-              <BookOpen className="h-3.5 w-3.5" />
-              Pick a learning path
+            <Link href="/know-your-rights" className="btn-outline">
+              Know your rights
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </motion.div>
 
@@ -143,7 +143,7 @@ export default function Hero() {
               { v: "15", l: "Domains" },
               { v: "200+", l: "Topics" },
               { v: "1.2k+", l: "Clauses" },
-              { v: "8", l: "Learning paths" },
+              { v: "50+", l: "Case studies" },
             ].map((s) => (
               <div key={s.l} className="flex flex-col items-center">
                 <p className="font-serif text-3xl font-medium tabular text-ink-900">
