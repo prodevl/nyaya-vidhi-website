@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Nyaya Vidhi — Indian Heritage Modern design system
+   ============================================================ */
+
+@layer base {
+  :root {
+    --paper: 251 247 239;
+    --ink: 26 20 16;
+    --saffron: 217 119 6;
+    --india-green: 15 81 50;
+    --marigold: 232 163 61;
+  }
+
+  * {
+    border-color: rgba(26, 20, 16, 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #FBF7EF;
+    color: #1A1410;
+    font-feature-settings: "ss01", "cv11", "calt";
+    background-image:
+      radial-gradient(at 0% 0%, rgba(217, 119, 6, 0.06) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(15, 81, 50, 0.04) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(217, 119, 6, 0.03) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background-color: rgba(217, 119, 6, 0.25);
+    color: #1A1410;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F4EDDE;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D9C7A3;
+    border-radius: 999px;
+    border: 2px solid #F4EDDE;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D97706;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-feature-settings: "ss01", "ss02";
+    letter-spacing: -0.015em;
+  }
+}
+
+/* ============================================================
+   Component utility patterns
+   ============================================================ */
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-4xl px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Eyebrow / kicker */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-saffron-600;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-8 bg-saffron-500;
+  }
+
+  /* Devanagari accent text */
+  .devanagari {
+    font-family: var(--font-tiro), serif;
+    font-feature-settings: normal;
+  }
+
+  /* Editorial headline */
+  .headline-serif {
+    @apply font-serif font-medium tracking-tight text-ink-900;
+  }
+
+  /* Subtle jaali pattern overlay */
+  .pattern-jaali {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(26, 20, 16, 0.12) 1px,
+      transparent 0
+    );
+    background-size: 14px 14px;
+  }
+
+  .pattern-jaali-fine {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(26, 20, 16, 0.08) 1px,
+      transparent 0
+    );
+    background-size: 10px 10px;
+  }
+
+  /* Block-print texture for cards */
+  .texture-paper {
+    background-color: #FEFCF7;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(217, 119, 6, 0.025), transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(15, 81, 50, 0.02), transparent 50%);
+  }
+
+  /* Card primitive */
+  .card-heritage {
+    @apply relative overflow-hidden rounded-2xl border border-ink-100/70 bg-paper-50 transition-all duration-300;
+    box-shadow: 0 1px 2px rgba(26,20,16,0.03), 0 8px 24px -12px rgba(26,20,16,0.06);
+  }
+  .card-heritage:hover {
+    @apply border-saffron-300;
+    box-shadow: 0 2px 6px rgba(26,20,16,0.06), 0 24px 48px -16px rgba(217,119,6,0.18);
+    transform: translateY(-2px);
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-paper-100 focus-visible:ring-saffron-500;
+  }
+
+  .btn-primary {
+    @apply btn bg-ink-900 text-paper-50 hover:bg-ink-500;
+    box-shadow: 0 1px 2px rgba(26,20,16,0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  .btn-saffron {
+    @apply btn bg-saffron-500 text-white hover:bg-saffron-600;
+    box-shadow: 0 1px 2px rgba(217,119,6,0.3), inset 0 1px 0 rgba(255,255,255,0.18), 0 8px 24px -8px rgba(217,119,6,0.45);
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-ink-900 hover:bg-ink-900/5;
+  }
+
+  .btn-outline {
+    @apply btn border border-ink-900/15 bg-paper-50 text-ink-900 hover:border-ink-900/30 hover:bg-paper-100;
+  }
+
+  /* Sanskrit-style divider */
+  .divider-ornament {
+    @apply flex items-center gap-4 text-saffron-500;
+  }
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: "";
+    @apply h-px flex-1 bg-gradient-to-r from-transparent via-saffron-300 to-transparent;
+  }
+
+  /* Animated shimmer text gradient */
+  .text-shimmer {
+    background-image: linear-gradient(
+      110deg,
+      #1A1410 35%,
+      #D97706 50%,
+      #1A1410 65%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* Tag pill */
+  .tag {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-ink-100 bg-paper-50 px-2.5 py-1 text-[11px] font-medium text-ink-500;
+  }
+  .tag-saffron {
+    @apply tag border-saffron-200 bg-saffron-50 text-saffron-700;
+  }
+  .tag-india {
+    @apply tag border-india-200 bg-india-50 text-india-700;
+  }
+
+  /* Soft glow ring on focus elements */
+  .ring-heritage {
+    box-shadow: 0 0 0 1px rgba(217,119,6,0.2), 0 0 0 4px rgba(217,119,6,0.08);
+  }
+
+  /* Number tabular */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Mandala rotating decoration (use behind heroes) */
+  .mandala-bg {
+    background-image: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(217,119,6,0.04) 30deg,
+      transparent 60deg,
+      rgba(15,81,50,0.03) 90deg,
+      transparent 120deg,
+      rgba(217,119,6,0.04) 150deg,
+      transparent 180deg,
+      rgba(15,81,50,0.03) 210deg,
+      transparent 240deg,
+      rgba(217,119,6,0.04) 270deg,
+      transparent 300deg,
+      rgba(15,81,50,0.03) 330deg,
+      transparent 360deg
+    );
+  }
+
+  /* Underline animation for links */
+  .link-underline {
+    @apply relative inline-flex items-center;
+  }
+  .link-underline::after {
+    content: "";
+    @apply absolute bottom-0 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-300 ease-out;
+  }
+  .link-underline:hover::after {
+    @apply origin-left scale-x-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Mask gradient utilities */
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  }
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(to right, #000 70%, transparent);
+    mask-image: linear-gradient(to right, #000 70%, transparent);
+  }
+}
